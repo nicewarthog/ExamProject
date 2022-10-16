@@ -1,2 +1,2 @@
 DRIVER_PATH = r"\Users\nicewarthog\PycharmProjects\ExamProject\chromedriver.exe"
-BASE_URL = "https://vino.ua/"
+BASE_URL = "https://dicentra.ua/ua/"
