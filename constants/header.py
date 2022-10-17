@@ -15,9 +15,13 @@ class HeaderConst:
     SIGN_IN_PASSWORD_FIELD_XPATH = ".//div[@class='login__form-inner']//input[@class='input input-pass']"
     SIGN_IN_BUTTON_XPATH = ".//button[contains(text(),'Увiйти')]"
 
-    # Account
+    # Profile
     CLOSE_YOUR_CITY_POPUP_XPATH = ".//a[@class='geo-close js-close-geo']"
     ACCOUNT_USERNAME_XPATH = ".//span[contains(text(),'{login_option}')]"
     PROFILE_BUTTON_XPATH = ".//div[@class='header-middle__personal hide-mob']//i[@class='ic-personal']"
 
+    # Search
     SEARCH_BUTTON_XPATH = ".//div[@class='header-middle__search ']//i[@class='ic-search']"
+
+    # Catalog
+    CATALOG_FLOWERS_BUTTON_XPATH = ".//li[@class='main-menu__item']/a[@href='https://dicentra.ua/ua/czvetyi/']"

@@ -4,7 +4,7 @@ from pages.base_page import BasePage
 
 
 class ProfilePage(BasePage):
-    log = logging.getLogger("[StartPage]")
+    log = logging.getLogger("[ProfilePage]")
 
     def __init__(self, driver):
         super().__init__(driver)
@@ -16,7 +16,7 @@ class ProfilePage(BasePage):
         self.header = Header(self.driver)
 
     def sign_out(self):
-        """Log out from account and verify that you are outside"""
+        """Log out from account"""
         # Click Log Out Button
         self.click(xpath=self.profile_page_constants.SIGN_OUT_BUTTON_XPATH)
         from pages.start_page import StartPage
