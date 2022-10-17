@@ -17,8 +17,8 @@ class TestProfilePage:
         """
         Fixture:
         - Create driver, open Start page
-        - Log In as basic user
         - Open Profile page
+        - Log In as basic user
         Steps:
         - Click Sign Out button
         - Verify success Sign Out

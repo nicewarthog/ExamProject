@@ -14,8 +14,14 @@ class Header(BasePage):
 
     @wait_until_ok(period=0.25)
     def navigate_to_profile(self):
-        """Click on username button"""
-        # sleep(3)
+        """Click username button"""
         self.click(xpath=self.header_constants.PROFILE_BUTTON_XPATH)
         from pages.profile_page import ProfilePage
         return ProfilePage(self.driver)
+
+    @wait_until_ok(period=0.25)
+    def navigate_to_catalog_flowers(self):
+        """Click flowers button in catalog menu"""
+        self.click(xpath=self.header_constants.CATALOG_FLOWERS_BUTTON_XPATH)
+        from pages.catalog_flowers_page import CatalogFlowersPage
+        return CatalogFlowersPage(self.driver)
