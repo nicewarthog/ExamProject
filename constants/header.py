@@ -22,6 +22,10 @@ class HeaderConst:
 
     # Search
     SEARCH_BUTTON_XPATH = ".//div[@class='header-middle__search ']//i[@class='ic-search']"
+    SEARCH_FIELD_XPATH = ".//input[@id='search__input']"
+    SEARCH_LIST_BUTTON_XPATH = ".//a[@href='search/?query={search_option}']"
+    SEARCH_INCORRECT_TEXT = "За вашим запитом нічого не знайдено"
+    SEARCH_INCORRECT_XPATH = f".//p[contains(text(),'{SEARCH_INCORRECT_TEXT}')]"
 
     # Catalog
     CATALOG_FLOWERS_BUTTON_XPATH = ".//li[@class='main-menu__item']/a[@href='https://dicentra.ua/ua/czvetyi/']"

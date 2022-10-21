@@ -14,6 +14,8 @@ class StartPage(BasePage):
         self.header_constants = HeaderConst
         from pages.header import Header
         self.header = Header(self.driver)
+        from pages.product_card_page import ProductCardPage
+        self.product_card_page = ProductCardPage(self.driver)
 
     # SIGN UP
     def sign_up(self, user):
