@@ -6,7 +6,7 @@ from pages.utils import User
 class TestStartPage:
     log = logging.getLogger("[StartPage]")
 
-    # SIGN IN
+    # SIGN UP
 
     def test_success_sign_up(self, open_start_page):
         """
@@ -31,7 +31,7 @@ class TestStartPage:
 
     # SIGN IN
 
-    def test_correct_log_in(self, open_start_page):
+    def test_correct_sign_in(self, open_start_page):
         """
         Fixture:
         - Create driver, open page
@@ -49,28 +49,3 @@ class TestStartPage:
         # Verify success
         open_start_page.verify_success_sign_in(basic_user.login)
         self.log.info(f"Account name {basic_user.login} was verified, Sign In was successfully")
-
-    # def test_add_to_cart(self, open_start_page, basic_user):
-    #     """
-    #     Fixture:
-    #     - Create driver, open page
-    #     - Sign In as basic user
-    #     Steps:
-    #     - Go to page of some product
-    #     - Add to Cart the product
-    #     - Verify the product on cart page
-    #     """
-    #
-    #     # Navigate to CatalogPage
-    #     catalog_page = open_start_page.start_page.navigate_to_catalog_page()
-    #
-    #     # Navigate to Product Card
-    #     # sleep(1)
-    #     card_page = catalog_page.navigate_to_product_card()
-    #
-    #     # Add to cart
-    #     sleep(1)
-    #     favorite_page = card_page.add_to_favorite()
-    #
-    #     sleep(1)
-    #     favorite_page.verify_favorite_product()

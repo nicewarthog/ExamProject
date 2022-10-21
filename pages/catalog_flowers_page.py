@@ -13,8 +13,15 @@ class CatalogFlowersPage(BasePage):
         self.catalog_flowers_constants = CatalogFlowersPageConst
 
     @wait_until_ok(period=0.25)
-    def navigate_to_product_card(self):
-        """Click card button in the catalog"""
-        self.click(xpath=self.catalog_flowers_constants.PRODUCT_CARD_NAME_XPATH)
+    def navigate_to_product_card_1(self):
+        """Navigate to product card 1"""
+        self.click(xpath=self.catalog_flowers_constants.PRODUCT_CARD_1_XPATH)
+        from pages.product_card_page import ProductCardPage
+        return ProductCardPage(self.driver)
+
+    @wait_until_ok(period=0.25)
+    def navigate_to_product_card_2(self):
+        """Navigate to product card 2"""
+        self.click(xpath=self.catalog_flowers_constants.PRODUCT_CARD_2_XPATH)
         from pages.product_card_page import ProductCardPage
         return ProductCardPage(self.driver)
