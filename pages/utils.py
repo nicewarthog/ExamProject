@@ -5,6 +5,7 @@ import string
 from time import sleep
 
 
+# RANDOM
 def random_num():
     """Generate random number"""
     return str(random.randint(1111111, 9999999))
@@ -15,6 +16,7 @@ def random_str(length=5):
     return ''.join(random.choice(string.ascii_letters) for _ in range(length))
 
 
+# WAIT
 def wait_until_ok(timeout=5, period=0.5):
     """Reties until OK"""
 
@@ -51,8 +53,3 @@ class User:
         self.login = f"{user}" if not login else login
         self.phone = f"97{random_num()}" if not phone else phone
         self.password = f"{random_str(4)}{random_num()}" if not password else password
-
-    # def sign_in_basic_user(self, email="", password=""):
-    #     """Fill fields correct user data"""
-    #     self.email = "max_sol@gmail.com" if not email else email
-    #     self.password = "maxmaxmax" if not password else password

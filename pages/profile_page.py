@@ -17,7 +17,6 @@ class ProfilePage(BasePage):
 
     def sign_out(self):
         """Log out from account"""
-        # Click Log Out Button
         self.click(xpath=self.profile_page_constants.SIGN_OUT_BUTTON_XPATH)
         from pages.start_page import StartPage
         return StartPage(self.driver)

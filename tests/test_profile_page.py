@@ -24,9 +24,9 @@ class TestProfilePage:
         - Verify success Sign Out
         """
 
-        # Click Sign Out button
+        # Navigate from Account to StartPage
         open_start_page = open_profile_page.sign_out()
 
         # Verify success Sign Out
         open_start_page.verify_success_sign_out()
-        self.log.info("Sign Out was successful")
+        self.log.info("Sign Out is successful")
