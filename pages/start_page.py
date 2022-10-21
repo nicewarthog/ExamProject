@@ -8,8 +8,6 @@ class StartPage(BasePage):
 
     def __init__(self, driver):
         super().__init__(driver)
-        from constants.start_page import StartPageConst
-        self.start_page_constants = StartPageConst
         from constants.header import HeaderConst
         self.header_constants = HeaderConst
         from pages.header import Header
@@ -42,12 +40,33 @@ class StartPage(BasePage):
         """Sign in as the user"""
         # Open Sign In form
         self.click(xpath=self.header_constants.SIGN_UP_SIGN_IN_POPUP_XPATH)
-        # Fill email
+        # Fill phone number
         self.fill_field(xpath=self.header_constants.SIGN_IN_PHONE_FIELD_XPATH, value=basic_user.phone)
         # Fill password
         self.fill_field(xpath=self.header_constants.SIGN_IN_PASSWORD_FIELD_XPATH, value=basic_user.password)
         # Click button
         self.click(xpath=self.header_constants.SIGN_IN_BUTTON_XPATH)
+
+    def verify_empty_fields_sign_in(self):
+        """Verify validation messages for empty fields in Sign In form"""
+        assert self.get_element_text(
+            self.header_constants.SIGN_IN_EMPTY_PHONE_MESSAGE_XPATH) == self.header_constants.SIGN_IN_EMPTY_PHONE_MESSAGE_TEXT, \
+            f"Actual message: {self.get_element_text(self.header_constants.SIGN_IN_EMPTY_PHONE_MESSAGE_XPATH)}"
+        assert self.get_element_text(
+            self.header_constants.SIGN_IN_EMPTY_PASSWORD_MESSAGE_XPATH) == self.header_constants.SIGN_IN_EMPTY_PASSWORD_MESSAGE_TEXT, \
+            f"Actual message: {self.get_element_text(self.header_constants.SIGN_IN_EMPTY_PASSWORD_MESSAGE_XPATH)}"
+
+    def verify_incorrect_phone_sign_in(self):
+        """Verify validation message for incorrect phone data in Sign In form"""
+        assert self.get_element_text(
+            self.header_constants.SIGN_IN_INCORRECT_PHONE_MESSAGE_XPATH) == self.header_constants.SIGN_IN_INCORRECT_PHONE_MESSAGE_TEXT, \
+            f"Actual message: {self.get_element_text(self.header_constants.SIGN_IN_INCORRECT_PHONE_MESSAGE_XPATH)}"
+
+    def verify_incorrect_password_sign_in(self):
+        """Verify validation message for incorrect password data in Sign In form"""
+        assert self.get_element_text(
+            self.header_constants.SIGN_IN_INCORRECT_PASSWORD_MESSAGE_XPATH) == self.header_constants.SIGN_IN_INCORRECT_PASSWORD_MESSAGE_TEXT, \
+            f"Actual message: {self.get_element_text(self.header_constants.SIGN_IN_INCORRECT_PASSWORD_MESSAGE_XPATH)}"
 
     def verify_success_sign_in(self, login):
         """Verify correct Sign In"""
@@ -59,8 +78,3 @@ class StartPage(BasePage):
         assert self.get_element_text(
             self.header_constants.SIGN_UP_SIGN_IN_POPUP_XPATH) == self.header_constants.SIGN_UP_SIGN_IN_POPUP_TEXT, \
             f"Actual message: {self.get_element_text(self.header_constants.SIGN_UP_SIGN_IN_POPUP_XPATH)}"
-
-    # @wait_until_ok(period=0.25)
-    # def navigate_to_catalog_page(self):
-    #     # Click button
-    #     self.click(xpath=self.constants.CATALOG_PAGE_BUTTON_XPATH)

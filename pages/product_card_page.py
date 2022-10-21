@@ -38,25 +38,13 @@ class ProductCardPage(BasePage):
             self.product_card_page_constants.PRODUCT_TITLE_IN_CART_XPATH) == self.get_product_name(), \
             f"Actual message: {self.get_element_text(self.product_card_page_constants.PRODUCT_TITLE_IN_CART_XPATH)}"
 
-    # def to_card_from_cart_form(self):
-    #     """Click button and back to card"""
-    #     self.click(xpath=self.product_card_page_constants.CART_POPUP_CLOSE_BUTTON_XPATH)
-
-    def delete_from_cart(self):
-        """Click button to delete product from cart"""
-        self.click(xpath=self.product_card_page_constants.DELETE_PRODUCT_FROM_CART_XPATH)
-
     def close_cart(self):
         """Close cart"""
         self.click(xpath=self.product_card_page_constants.CART_POPUP_CLOSE_BUTTON_XPATH)
 
-    def verify_total_price_with_one_product(self):
-        product_1_price = self.get_element_text(self.product_card_page_constants.CART_PRODUCT_1_PRICE_XPATH).replace(" ", "")
+    def verify_total_price(self):
+        product_prices = self.wait_until_all_displayed(xpath=self.product_card_page_constants.CART_PRODUCT_PRICES_XPATH)
+        price_values = [int(price.text.replace(" ", "")) for price in product_prices]
         total_price = self.get_element_text(self.product_card_page_constants.CART_TOTAL_PRICE_XPATH).replace(" ", "")
-        assert int(product_1_price) == int(total_price)
-
-    def verify_total_price_with_two_products(self):
-        product_1_price = self.get_element_text(self.product_card_page_constants.CART_PRODUCT_1_PRICE_XPATH).replace(" ", "")
-        product_2_price = self.get_element_text(self.product_card_page_constants.CART_PRODUCT_2_PRICE_XPATH).replace(" ", "")
-        total_price = self.get_element_text(self.product_card_page_constants.CART_TOTAL_PRICE_XPATH).replace(" ", "")
-        assert int(product_1_price) + int(product_2_price) == int(total_price)
+        assert sum(price_values) == int(total_price), f"Actual sum of prices {sum(price_values)}, total price {int(total_price)}"
+        self.log.info(f" Products price {sum(price_values)} = total price {int(total_price)}")
